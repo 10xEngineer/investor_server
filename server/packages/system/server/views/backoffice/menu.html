@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block head %}
+	<script src="//cdnjs.cloudflare.com/ajax/libs/packery/1.1.2/packery.pkgd.min.js"></script>
+	<script type="text/javascript">
+    window.onload = doMasonry; //notice no parenthesis
+
+	function doMasonry() {
+		var container = document.querySelector('#container');
+		var pckry = new Packery( container, {
+		  // options...
+		  itemSelector: '.item',
+		  /* 5 columns by default */
+		.grid-sizer { width: 20%; }
+		  gutter: 0,
+		  "isFitWidth": true
+		});
+	};
+	
+	var merchants = {{merchants|json|safe}};
+	</script>
+{% endblock %}
+
+{% block content %}
+<h3>{{merchant.name}}</h3>
+<div id="container" class="js-packery" data-packery-options='{ "itemSelector": ".item" }'>
+	{% for merchant in merchants %}
+	{% for item in merchant.items %}
+		<div class="item">
+			<img class="img-thumbnail" src="/{{item.photo}}"></img>
+			<!--h4>{{item.description}}</h4-->
+		</div>
+	{% endfor %}
+	{% endfor %}
+</div>
+{% endblock %}

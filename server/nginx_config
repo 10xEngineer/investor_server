@@ -1,0 +1,87 @@
+# namecheap
+# merchant subdomain -> ip address -> A record
+
+# the IP(s) on which your node server is running.
+upstream node.ucanpay.io {
+    server 127.0.0.1:3000;
+}
+
+# the nginx server instance
+server {
+    listen 80;
+    server_name ucanpay.io *.ucanpay.io;
+    access_log /var/log/nginx/ucanpay.log;
+
+    root /home/ubuntu/ucanpay/POS/server/packages/system/public/assets/static/website;
+    index home.html signup.html;
+
+    # static website files
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        try_files $uri $uri/ =404;
+    }
+
+    # catch any missing /website url references
+    location /website {
+      rewrite ^(/website/.*)\..*$ /$2. last;
+    }
+
+    # pass the request to the node.js server with the correct headers and much more can be added, see nginx config options
+    location /office {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      # websockets
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+
+      proxy_pass http://node.ucanpay.io/office;
+      proxy_redirect off;
+    }
+}
+
+server {
+  listen 80;
+  server_name merchant.ucanpay.io;
+  access_log /var/log/nginx/merchant.ucanpay.log;
+
+ # pass the request to the node.js server with the correct headers and much more can be added, see nginx config options
+ location / {
+   proxy_set_header X-Real-IP $remote_addr;
+   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   proxy_set_header Host $http_host;
+   proxy_set_header X-NginX-Proxy true;
+
+   # websockets
+   proxy_http_version 1.1;
+   proxy_set_header Upgrade $http_upgrade;
+   proxy_set_header Connection "upgrade";
+
+   proxy_pass http://node.ucanpay.io;
+   proxy_redirect off;
+  }
+}
+
+ server {
+     listen 443;
+     ssl    on;
+     ssl_certificate    /etc/nginx/ssl/ssl-bundle.crt;
+     ssl_certificate_key     /etc/nginx/ssl/ucanpay.key;
+     server_name ucanpay.io *.ucanpay.io;
+     access_log /var/log/nginx/ucanpay.log;
+
+     add_header Strict-Transport-Security max-age=500;
+
+     location / {
+       proxy_pass  http://ucanpay.io;
+       proxy_redirect off;
+       proxy_set_header Host $host ;
+       proxy_set_header X-Real-IP $remote_addr ;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for ;
+       proxy_set_header X-Forwarded-Proto https;
+     }
+ }

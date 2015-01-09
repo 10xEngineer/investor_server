@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <section class="container" id='content-container'>
+		{% if user.userType == 'admin' %}
+			<h1><a href='/office/admin'>Administration</a></h1>
+			<h1><a href='/office/merchant_list'>Merchant List</a></h1>
+		{% endif %}
+		{% if user.userType == 'staff' %}
+			<h1><a href='/office/merchant_profile/{{user.merchant|json}}'>Merchant Profile</a></h1>
+		{% endif %}
+	</section>
+{% endblock %}

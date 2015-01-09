@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>UCanPay</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="js/main.js" type="text/javascript"></script>
+        <script type="text/javascript">
+			function signupMailingList() {
+				var _email = $('#email1').val() || $('#email2').val();
+				console.log('email: '+JSON.stringify(_email));
+				if( _email && _email.trim() != '' ) {
+					_cio.track("mailinglist_signup", { email: _email });
+					$.ajax({
+					 url: '/office/mailinglist_signup',
+					 type: "POST",
+					 data: {email: _email},
+					 success: function(response){
+					   //alert("Thank you for signing up. A registration email has been sent to you.\n");
+					   var $this = $('.subscribe');
+				       $this.toggleClass('subscribe');
+				       if($this.hasClass('subscribe')){
+				         $this.text('Subscribe');         
+				       } else {
+				         $this.text('Subscribed');
+						 // disable the button once subscribed
+						 $this.css("background", "gray");
+						 $this.prop("disabled",true);
+						 $this.addClass('btn-disabled');
+						 // got to top of page
+						 //$('html, body').animate({ scrollTop: 0 }, 'slow');
+				       }
+					 },
+					 error: function(response){
+					   alert("An error occurred. Please try later.");
+					 }
+					});
+				}
+			};
+			function betaRegister(referral) {
+				_cio.track("betaRegistration", {referral: referral});
+			}
+		</script>
+		<!--Start of Zopim Live Chat Script-->
+		<script type="text/javascript">
+		window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+		$.src='//v2.zopim.com/?2YQmAEASBLTgPF0iVHfwa9pmvhy6ArJW';z.t=+new Date;$.
+		type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+		</script>
+		<!--End of Zopim Live Chat Script-->
+    </head>
+    <body class="home">
+
+        <header>
+            <div class="topbar">
+                <a class="logo" href="/">Ucanpay</a>
+
+                <div class="links">
+                    <a href="#">About</a>
+                    <a href="office/blog">Blog</a>
+                    <a href="#">Services</a>
+                </div>
+                <a class="login-link" href="signup.html" onclick="javascript:betaRegister('topButton');">Beta Signup</a>
+            </div>
+        </header>
+        <div class="container">
+            <div class="banner-container">
+                <div class="copy">
+                    <h1>UcanPay, Hong Kong<br>Next payment revolution</h1>
+                    <p>Zero Risk, Zero Fraud, Zero Chargebacks</p>
+                    <p>Embrace the future and start accepting digital currencies today. </p>
+
+                    <form action="javascript:signupMailingList();" method="POST">
+                        <input type="text" name="email1" id="email1" placeholder="Enter your email address"/>
+                        <button class="subscribe">Subscribe</button>
+                    </form>
+                </div>
+                <div class="ipad">
+                	<!--img src="../images/ipad.png" /-->
+                </div>
+            </div>
+            <div class="main-content">
+                <h1>Bitcoin, Litecoin, Ripple, Dogecoin.<br> Accepting them all.</h1>
+
+                <h2>Thanks to UcanPay technology, merchants and customers alike can now easily do<br>business together regardless of their digital currencies of choice.</h2>
+
+                <div class="features-area">
+                    <div class="feature-box pos">
+                        <div class="title">UcanPay POS / ATM (Beta)</div>
+                        <div class="description">
+                            <p>Accept digital<br>currencies in an instant.</p>
+                            <p>Drive foot traffic and generate more revenue thanks to our ATM. </p>
+                        </div>
+                        <a class="more-info-link" href="#">More info</a>
+                    </div>
+                    <div class="feature-box wallet disabled">
+                        <div class="title">UcanPay Universal Wallet</div>
+                        <div class="description temporary">
+                            <p>More information<br>Coming Soon</p>
+                        </div>
+                    </div>
+                    <div class="feature-box merchant disabled">
+                        <div class="title">UcanPay Merchant Portal</div>
+                        <div class="description temporary">
+                            <p>More information<br>Coming Soon</p>
+                        </div>
+                    </div>
+                    <div class="feature-box giftcards disabled">
+                        <div class="title">UcanPay Gift Cards</div>
+                        <div class="description temporary">
+                            <p>More information<br>Coming Soon</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gradient-area">
+                    <h1>Simple fees for merchants.<br> UcanPay Wallet for customers are free forever.</h1>
+                </div>
+                <div class="prices-area">
+                    <div class="price-box disabled">
+                        <div class="title">Basic</div>
+                        <div class="subtitle">Great for getting started</div>
+                        <div class="terms">
+                            <div class="title">Coming<br>Soon</div>
+                        </div>
+                        <!--div class="description">
+                            <p>Unlimited POS processing volume</p>
+                            <p>Low Transaction fee</p>
+                            <p>POS daily deposit</p>
+                            <p>ATM monthly settlement</p>
+                            <p>Digital to fiat currencies conversion</p>
+                            <p>Email support</p>
+                        </div-->
+                    </div>
+                    <div class="price-box">
+                        <div class="title">Standard</div>
+                        <div class="subtitle">Merchants’ preferred choice</div>
+                        <div class="terms">
+                            <div class="price">HK$ <span>599</span> Monthly</div>
+                            <div class="details">
+                                <span>First 12 months</span>
+                                <span class="strong">FREE</span>
+                                <span>Cancellation anytime</span>
+                            </div>
+                        </div>
+                        <div class="description">
+							<p>Sign up for the <a href="signup.html" onclick="javascript:betaRegister('lowerButton');">BETA</a> now</p>
+                            <!--p>Unlimited POS processing volume</p>
+                            <p>Low Transaction fee</p>
+                            <p>POS daily deposit</p>
+                            <p>ATM monthly settlement</p>
+                            <p>Digital to fiat currencies conversion</p>
+                            <p>Email support</p-->
+                        </div>
+                    </div>
+                    <div class="price-box disabled">
+                        <div class="title">Premium</div>
+                        <div class="subtitle">Enterprise solution of choice</div>
+                        <div class="terms">
+                            <div class="title">Coming<br>Soon</div>
+                        </div>
+                        <div class="description">
+                            <!--p>Unlimited POS processing volume</p>
+                            <p>Low Transaction fee</p>
+                            <p>POS daily deposit</p>
+                            <p>ATM monthly settlement</p>
+                            <p>Digital to fiat currencies conversion</p>
+                            <p>Email support</p>
+                            <p>1 Time on-site assistant</p-->
+                        </div>
+                    </div>
+                </div>
+                <div class="app-area">
+                    <div class="mobile"></div>
+                    <div class="note">* Only Bitcoin will be supported at first during Beta period.</div>
+                    <div class="copy">
+                        <h4>We have launched<br>our beta app.</h4>
+                        <p>Sign up now to access UcanPay POS/ATM Beta.<br>
+                            Zero Risk, Zero Fraud, Zero Chargebacks<br>
+                            Accept payment from anyone without fear<br>
+                            and join our Free beta test today.</p>
+                        <a href='signup.html'>Get it for free now</a>
+
+                        <div class="call-note">Or call our customer hotline at 852-2950-8979</div>
+                    </div>
+
+                </div>
+                <div class="bottom-banner-container">
+                    <div class="copy">
+                        <h4>Subscribe now</h4>
+                        <p>Get immediately notified on<br>our product official release!</p>
+
+                        <form action="javascript:signupMailingList();" method="POST">
+                            <input type="text" name="email2" id="email2" placeholder="Enter your email address"/>
+                            <button class="subscribe">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <footer>
+            <div class="languages-list">
+                <a href="#">Chi</a>
+                <a class="active" href="#">Eng</a>
+            </div>
+            <div class="links-row company">
+                <a class="active" href="#">About</a>
+                <a href="#">Contact us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="links-row support">
+                <a href="#">FAQ</a>
+                <a href="#">Security</a>
+                <span>Copyright &copy; 2014 UcanPay Wallet. All rights reserved.</span>
+            </div>
+        </footer>
+
+		<script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
+		<style type="text/css" media="screen, projection">
+		  @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
+		</style>
+		<script type="text/javascript">
+		  if (typeof(Zenbox) !== "undefined") {
+		    Zenbox.init({
+		      dropboxID:   "20165149",
+		      url:         "https://ucanpay.zendesk.com",
+		      tabTooltip:  "Support",
+		      tabImageURL: "https://p4.zdassets.com/external/zenbox/images/tab_support_right.png",
+		      tabColor:    "black",
+		      tabPosition: "Right"
+		    });
+		  }
+		</script>
+		<script type="text/javascript">
+		  var _cio = _cio || [];
+		  (function() {
+		    var a,b,c;a=function(f){return function(){_cio.push([f].
+		    concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+		    "sidentify","track","page","cookie"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+		    var t = document.createElement('script'),
+		        s = document.getElementsByTagName('script')[0];
+		    t.async = true;
+		    t.id    = 'cio-tracker';
+		    t.setAttribute('data-site-id', 'c1f65f085c08444faea4');
+		    t.src = 'https://assets.customer.io/assets/track.js';
+		    s.parentNode.insertBefore(t, s);
+		  })();
+		</script>
+    </body>
+</html>

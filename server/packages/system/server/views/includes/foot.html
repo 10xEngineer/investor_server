@@ -1,0 +1,54 @@
+{% for file in assets.core.js %}
+  <script type="text/javascript" src="/{{file}}"></script>
+{% endfor %}
+
+<script type="text/javascript" src="/bower_components/angular-toggle-switch/angular-toggle-switch.min.js"></script>
+<script type="text/javascript" src="/bower_components/moment/moment.js"></script>
+<script type="text/javascript" src="/bower_components/angular-moment/angular-moment.js"></script>
+<script type="text/javascript" src="/bower_components/angular-native-picker/build/angular-datepicker.js"></script>
+<script type="text/javascript" src="/bower_components/snapjs/snap.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-snap/angular-snap.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-base64/angular-base64.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate/angular-translate.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-bootstrap-show-errors/src/showErrors.min.js"></script>
+<script type="text/javascript" src="/client/assets/js/jquery.clearsearch.js"></script>
+<script src="/bower_components/intl-tel-input/build/js/intlTelInput.js"></script>
+<link rel="stylesheet" href="/bower_components/intl-tel-input/build/css/intlTelInput.css">
+
+<!--script type="text/javascript" src="/modules/aggregated.js"></script-->
+<script src="/system/init.js"></script>
+<script src="/system/system.js"></script>
+<script src="/users/users.js"></script>
+<script src="/api/controllers/api.js"></script>
+<script src="/api/routes/api.js"></script>
+<script src="/api/services/api.js"></script>
+<script src="/client/controllers/client.js"></script>
+<script src="/client/directives/client.js"></script>
+<script src="/client/routes/client.js"></script>
+<script src="/client/services/client.js"></script>
+<script src="/system/controllers/header.js"></script>
+<script src="/system/controllers/index.js"></script>
+<script src="/system/routes/system.js"></script>
+<script src="/system/services/global.js"></script>
+<script src="/system/services/interceptor.js"></script>
+<script src="/system/services/menus.js"></script>
+<script src="/users/controllers/meanUser.js"></script>
+<script src="/users/routes/auth.js"></script>
+<script src="/users/services/meanUser.js"></script>
+
+<script src="/client/assets/js/angular-checklist-model.js"></script>
+
+<script type="text/javascript" >
+
+	var socket = io.connect(window.location.protocol+'//'+window.location.hostname+':3001');
+	socket.on('payment_received', function (data) {
+    	location.hash = '#!/transaction/'+data.transaction._id+'/yes';
+	});
+
+
+
+</script>
+

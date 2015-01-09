@@ -1,0 +1,128 @@
+items: [{
+		description: "Breakfast Salmon Bagel",
+		quantity: 10,
+		price_hkd: 110.00,
+		category: "breakfast",
+		photo: "foodpics/breakfast salmon bagel.jpeg"
+	}, {
+		description: "Bruschetta",
+		quantity: 1, 
+		price_hkd: 80.00,
+		category: "starter",
+		photo: "foodpics/bruschetta.jpeg"
+	},	{
+		description: "Burger Bagel",
+		quantity: 10,
+		price_hkd: 160.00,
+		category: "main",
+		photo: "foodpics/burger bagel.jpeg"
+	}, {
+		description: "Calamari Salad",
+		quantity: 10, 
+		price_hkd: 200.00,
+		category: "starter",
+		photo: "foodpics/calamari salad.jpeg"
+	}, {
+		description: "Chicken Wings",
+		quantity: 10,
+		price_hkd: 100.00,
+		category: "starter",
+		photo: "foodpics/chicken wings.jpeg"
+	}, {
+		description: "Chocolate Dessert",
+		quantity: 1, 
+		price_hkd: 80.00,
+		category: "dessert",
+		photo: "foodpics/chocolate dessert.jpeg"
+	},	{
+		description: "Classic Beef Burger",
+		quantity: 10,
+		price_hkd: 160.00,
+		category: "main",
+		photo: "foodpics/classic burger.jpeg"
+	}, {
+		description: "Classic Pizza",
+		quantity: 10, 
+		price_hkd: 140.00,
+		category: "main",
+		photo: "foodpics/classic pizza.jpeg"
+	}, {
+		description: "Greek Pasta",
+		quantity: 10,
+		price_hkd: 110.00,
+		category: "starter",
+		photo: "foodpics/greek pasta.jpeg"
+	}, {
+		description: "Lamb",
+		quantity: 1, 
+		price_hkd: 180.00,
+		category: "main",
+		photo: "foodpics/lamb.jpeg"
+	},	{
+		description: "Mexican Chili Beef Wrap",
+		quantity: 10,
+		price_hkd: 160.00,
+		category: "main",
+		photo: "foodpics/mexican beef wrap.jpeg"
+	}, {
+		description: "Mozarella Tomato Salad",
+		quantity: 10, 
+		price_hkd: 100.00,
+		category: "starter",
+		photo: "foodpics/mozarella tomato salad.jpeg"
+	}, {
+		description: "Olives",
+		quantity: 10,
+		price_hkd: 60.00,
+		category: "starter",
+		photo: "foodpics/olives.jpeg"
+	}, {
+		description: "Pancakes in Maple Syrup",
+		quantity: 1, 
+		price_hkd: 180.00,
+		category: "dessert",
+		photo: "foodpics/pancakes.jpeg"
+	},	{
+		description: "King Prawn Salad",
+		quantity: 10,
+		price_hkd: 160.00,
+		category: "starter",
+		photo: "foodpics/prawn salad.jpeg"
+	}, {
+		description: "Beef Ribs in BBQ Sauce",
+		quantity: 10, 
+		price_hkd: 200.00,
+		category: "main",
+		photo: "foodpics/ribs.jpeg"
+	}, {
+		description: "Whole Roast Chicken",
+		quantity: 10,
+		price_hkd: 250.00,
+		category: "main",
+		photo: "foodpics/roast chicken.jpeg"
+	}, {
+		description: "Salmon",
+		quantity: 1, 
+		price_hkd: 280.00,
+		category: "main",
+		photo: "foodpics/salmon.jpeg"
+	},	{
+		description: "Tenderloin Steak",
+		quantity: 10,
+		price_hkd: 360.00,
+		category: "main",
+		photo: "foodpics/steak.jpeg"
+	}, {
+		description: "Sushi Selection",
+		quantity: 10, 
+		price_hkd: 400.00,
+		category: "starter",
+		photo: "foodpics/sushi.jpeg"
+	}, {
+		description: "Tuna Taglietella Salad",
+		quantity: 1,
+		price_hkd: 180,
+		category: "starter",
+		photo: "foodpics/tuna taglietella salad.jpeg"
+	}
+]

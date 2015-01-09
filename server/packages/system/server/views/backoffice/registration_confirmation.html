@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+	<h3>Merchant Registration Confirmation</h3>
+	<br/>
+	<blockquote>
+		<p>An email with these registration details has been sent to <strong>{{merchant.email}}</strong> for your reference.</p>
+		<p>We will process your request as soon as possible and contact you on your registered phone number <strong>{{merchant.phone}}</strong></p>
+		<p>and on your registered email address <strong>{{merchant.email}}</strong>.</p>
+	</blockquote>
+	<br/>
+	<br/>
+    <section class="container" id='content-container'>
+		<h1>Merchant Profile</h1>
+		{% if merchant %}
+		<table class="table">
+		<thead>
+			<tr>
+				<th>Key</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>Name</td>
+			<td>
+		      <a href="/office/merchant_profile/{{ merchant._id }}">
+		        {{merchant.name}}
+		      </a>
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Email</td>
+		    <td>
+		      <a href="mailto://{{ merchant.email }}">
+		        {{merchant.email}}
+		      </a>
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Phone</td>
+		    <td>
+		        {{merchant.phone}}
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Address</td>
+		    <td>
+				<address>
+				{{merchant.address}}
+				</address>
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Description</td>
+		    <td>
+				{{merchant.description}}
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Style</td>
+		    <td>
+				{{merchant.style}}
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Tags</td>
+		    <td>
+				{{merchant.tags}}
+		    </td>
+		  </tr>
+		  <tr>
+			<td>Staff</td>
+		    <td>
+				<ul class="list-group">
+				{% for s in merchant.staff %}
+					<li class="list-group-item">
+						{% if s.permissions == "merchant.manager" %}
+							<span class="badge"><small>Mgr</small></span>
+						{% endif %}
+						<a href="/office/user_profile/{{ s._id }}"><small>{{s.name}}</small></a>
+					</li>
+				{% endfor %}
+				</ul>
+		    </td>
+		  </tr>
+		</tbody>
+		</table>
+		{% endif %}

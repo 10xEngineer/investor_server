@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--link rel="stylesheet" href="../website/signup/css/style.css">
+    <link rel="stylesheet" href="../website/signup/css/font-awesome.min.css"-->
+    {% block head %}{% endblock %}
+	<!--Start of Zopim Live Chat Script-->
+	<script type="text/javascript">
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+	$.src='//v2.zopim.com/?2YQmAEASBLTgPF0iVHfwa9pmvhy6ArJW';z.t=+new Date;$.
+	type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+	</script>
+	<!--End of Zopim Live Chat Script-->
+  </head>
+  <body>
+    <div role="navigation" class=" topbar navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">UCanPay Merchant</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/office/">Home</a></li>
+            {% if user %}
+			   <li><a href="/office/map">Map</a></li>
+               <li><a href="/office/logout">Logout</a></li>
+               <li class="pull-right"><a href="/office/user_profile/{{ user._id|json }}">{{ user.name }}</a></li>
+               {% if merchant %}
+                  <li class="pull-right"><a href="/office/merchant_profile/{{ merchant._id|json }}">{{ merchant.name }}</a></li>
+	           {% endif %}
+            {% else  %}
+               <li><a href="/office/login">Login</a></li>
+               <li><a href="/office/signup">Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section class="container" id='content-container'>
+      {% if messages.error %}
+        <div class="alert alert-danger">
+          <div>{{messages.error}}</div>
+        </div>
+      {% endif %}
+      {% if messages.info %}
+        <div class="alert alert-info">
+          <div>{{messages.info}}</div>
+        </div>
+      {% endif %}
+      {% if messages.success %}
+        <div class="alert alert-success">
+          <div>{{messages.success}}</div>
+        </div>
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </section>
+
+  </body>
+</html>

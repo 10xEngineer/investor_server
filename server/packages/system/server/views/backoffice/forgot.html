@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form method="POST">
+  <legend>Forgot Password</legend>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" value="" placeholder="Registered Email address" autofocus="autofocus" class="form-control"/>
+  </div>
+ <div class="form-group">
+    <label for="phone">Mobile Phone</label>
+    <input type="phone" name="phone" value="" placeholder="Registered mobile phone number (e.g. +85212345678)" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Reset Password</button>
+  </div>
+</form>
+{% endblock %}

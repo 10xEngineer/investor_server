@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form method="">
+  <legend>Forgot Password Confirmation</legend>
+  <h4>The forgot password link has been sent to your registered email and/or phone at:</h4>
+  {% if email %}
+  <div class="form-group">
+    <label for="email">Email</label>
+    <strong>{{email}}</strong>
+  </div>
+  {% endif %}
+  {% if phone %}
+ <div class="form-group">
+    <label for="phone">Mobile Phone</label>
+    <strong>{{phone}}</strong>
+  </div>
+  {% endif %}
+  <h6>Click on the URL sent to your account to change your password, or ignore it if you want to keep using the same password.</h6>
+</form>
+{% endblock %}
